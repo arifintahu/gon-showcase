@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import {
   Button,
@@ -17,6 +18,7 @@ import { getChainById } from '@/helpers'
 import { getCollection } from '@/rpc'
 
 export default function Home() {
+  const router = useRouter()
   const [chainId, setChainId] = useState('')
   const [denomId, setDenomId] = useState('')
   const [isNotFound, setIsNotFound] = useState(false)
@@ -38,6 +40,13 @@ export default function Home() {
       const response = await getCollection(chain.id, chain.rpc, denomId)
       if (response) {
         console.log(response)
+        router.push({
+          pathname: '/[chainId]/collection/[denomId]',
+          query: {
+            chainId: chainId,
+            denomId: denomId,
+          },
+        })
       } else {
         setIsNotFound(true)
       }

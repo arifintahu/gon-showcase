@@ -15,48 +15,36 @@ import {
   Paper,
 } from '@mui/material'
 import { Collection } from '@/rpc/types/irismod/nft'
+import { getChainById } from '@/helpers'
+import { getCollection } from '@/rpc'
 
 export default function CollectionDetail() {
-  const [collection, setCollection] = useState({} as Collection)
   const router = useRouter()
   const { chainId, denomId } = router.query
 
+  const [collection, setCollection] = useState({} as Collection)
+
   useEffect(() => {
+    const fetchData = async () => {
+      const chain = getChainById(String(chainId))
+      if (chain) {
+        const response = await getCollection(
+          chain.id,
+          chain.rpc,
+          String(denomId)
+        )
+        if (response) {
+          setCollection(response.collection)
+        } else {
+          alert('Collection is not found')
+        }
+      } else {
+        alert('Chain is not found')
+      }
+    }
+
     if (!Object.keys(collection).length) {
-      setCollection({
-        denom: {
-          id: 'arkprotocol002',
-          name: 'Ark Protocol - building multichain utilities',
-          schema: '',
-          creator: 'iaa183e7ccwsnngj2q8lfxnmekunspnfxs6qxd4v3f',
-          symbol: 'arkprotocol_symbol',
-          mint_restricted: true,
-          update_restricted: true,
-          description:
-            "Ark Protocol's mission: build multi-chain NFT utilities, allowing NFTs to move between chains & enabling utilities across multiple chains.",
-          uri: 'https://arkprotocol.io',
-          uri_hash: '',
-          data: '{"github_username": "taitruong", "discord_handle": "mr_t|Ark Protocol#2337", "team_name": "Ark Protocol", "community": "All Cosmos chains ;)"}',
-        },
-        nfts: [
-          {
-            id: 'ark001',
-            name: '',
-            uri: '',
-            data: '',
-            owner: 'iaa1cg0fcp6t974lanxa2rypl2a4epshw36z0mal7j',
-            uri_hash: '',
-          },
-          {
-            id: 'arkNFT003',
-            name: 'Follow us on Twitter',
-            uri: 'https://twitter.com/arkprotocol',
-            data: '{"description":"LFGoooooooooooo interchain!","discord_invite":"https://discord.gg/fVv6Mf9Wr8","team_name":"Ark Protocol","twitter":"arkprotocol","uptickd:name":{"value":""},"uptickd:uri_hash":{"value":""}}',
-            owner: 'iaa183e7ccwsnngj2q8lfxnmekunspnfxs6qxd4v3f',
-            uri_hash: '',
-          },
-        ],
-      })
+      fetchData().catch(console.error)
     }
   }, [chainId, denomId, collection])
 
