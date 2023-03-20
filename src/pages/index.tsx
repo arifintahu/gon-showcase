@@ -1,19 +1,25 @@
 import Head from 'next/head'
 import { useState } from 'react'
-import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
-import Box from '@mui/material/Box'
-import FormControl from '@mui/material/FormControl'
-import InputLabel from '@mui/material/InputLabel'
-import Typography from '@mui/material/Typography'
-import Select, { SelectChangeEvent } from '@mui/material/Select'
-import MenuItem from '@mui/material/MenuItem'
+import {
+  Button,
+  TextField,
+  Box,
+  FormControl,
+  InputLabel,
+  Typography,
+  Select,
+  SelectChangeEvent,
+  MenuItem,
+  Alert,
+} from '@mui/material'
 import chains from '@/data/chains.json'
 import { getChainById } from '@/helpers'
+import { getCollection } from '@/rpc'
 
 export default function Home() {
   const [chainId, setChainId] = useState('')
   const [denomId, setDenomId] = useState('')
+  const [isNotFound, setIsNotFound] = useState(false)
 
   const handleChain = (event: SelectChangeEvent) => {
     setChainId(event.target.value as string)
@@ -23,10 +29,21 @@ export default function Home() {
     setDenomId(event.target.value as string)
   }
 
-  const handleSearch = (event: any) => {
+  const handleSearch = async (event: any) => {
     event.preventDefault()
+    setIsNotFound(false)
     const chain = getChainById(chainId)
-    console.log(chain, denomId)
+
+    if (chain) {
+      const response = await getCollection(chain.id, chain.rpc, denomId)
+      if (response) {
+        console.log(response)
+      } else {
+        setIsNotFound(true)
+      }
+    } else {
+      alert('Chain is undefined')
+    }
   }
 
   return (
@@ -95,6 +112,11 @@ export default function Home() {
             >
               Search
             </Button>
+            {isNotFound ? (
+              <Alert severity="error">Collection is not found!</Alert>
+            ) : (
+              <></>
+            )}
           </Box>
         </Box>
       </main>
