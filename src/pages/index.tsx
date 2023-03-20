@@ -8,12 +8,25 @@ import InputLabel from '@mui/material/InputLabel'
 import Typography from '@mui/material/Typography'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
+import chains from '@/data/chains.json'
+import { getChainById } from '@/helpers'
 
 export default function Home() {
   const [chainId, setChainId] = useState('')
+  const [denomId, setDenomId] = useState('')
 
-  const handleChange = (event: SelectChangeEvent) => {
+  const handleChain = (event: SelectChangeEvent) => {
     setChainId(event.target.value as string)
+  }
+
+  const handleDenom = (event: any) => {
+    setDenomId(event.target.value as string)
+  }
+
+  const handleSearch = (event: any) => {
+    event.preventDefault()
+    const chain = getChainById(chainId)
+    console.log(chain, denomId)
   }
 
   return (
@@ -52,11 +65,13 @@ export default function Home() {
                 id="chainid-select"
                 value={chainId}
                 label="Chain ID"
-                onChange={handleChange}
+                onChange={handleChain}
               >
-                <MenuItem value={10}>Irishub</MenuItem>
-                <MenuItem value={20}>Stargaze</MenuItem>
-                <MenuItem value={30}>Juno</MenuItem>
+                {chains.map((chain) => (
+                  <MenuItem key={chain.id} value={chain.id}>
+                    {chain.name}
+                  </MenuItem>
+                ))}
               </Select>
             </FormControl>
             <TextField
@@ -68,12 +83,15 @@ export default function Home() {
               name="denom_id"
               autoComplete="off"
               autoFocus
+              onChange={handleDenom}
+              value={denomId}
             />
             <Button
               type="button"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onClick={handleSearch}
             >
               Search
             </Button>

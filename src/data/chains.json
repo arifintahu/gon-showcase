@@ -1,0 +1,12 @@
+[
+  {
+    "id": "gon-irishub-1",
+    "name": "GON - IRISnet",
+    "rpc": "http://34.80.93.133:26657"
+  },
+  {
+    "id": "elgafar-1",
+    "name": "GoN - Stargaze",
+    "rpc": "https://rpc.elgafar-1.stargaze-apis.com:443"
+  }
+]
