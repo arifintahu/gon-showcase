@@ -1,6 +1,5 @@
 import { Tendermint34Client } from '@cosmjs/tendermint-rpc'
 import { QueryClient } from '@cosmjs/stargate'
-import { Collection } from './types/irismod/nft'
 import { getIrisDenoms, getIrisCollection } from './iris'
 
 const CHAIN = {
