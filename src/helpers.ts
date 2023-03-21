@@ -9,3 +9,11 @@ interface Chain {
 export function getChainById(chainId: string): Chain | undefined {
   return chains.find((chain) => chain.id == chainId)
 }
+
+export function checkURL(url: string | undefined): Boolean {
+  if (url) {
+    return url.match(/\.(jpeg|jpg|gif|png)$/) != null
+  } else {
+    return false
+  }
+}
