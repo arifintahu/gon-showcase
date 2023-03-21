@@ -1,5 +1,6 @@
 import { Roboto } from 'next/font/google'
 import { createTheme } from '@mui/material/styles'
+import { teal } from '@mui/material/colors'
 
 export const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -12,6 +13,9 @@ export const roboto = Roboto({
 const theme = createTheme({
   palette: {
     mode: 'light',
+    primary: {
+      main: teal[400],
+    },
   },
   typography: {
     fontFamily: roboto.style.fontFamily,
