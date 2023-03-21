@@ -46,7 +46,6 @@ export default function Home() {
       if (chain) {
         const response = await getCollection(chain.id, chain.rpc, denomId)
         if (response) {
-          console.log(response)
           router.push({
             pathname: '/[chainId]/collection/[denomId]',
             query: {
@@ -56,10 +55,12 @@ export default function Home() {
           })
         } else {
           setIsNotFound(true)
+          setLoading(false)
         }
       }
+    } else {
+      setLoading(false)
     }
-    setLoading(false)
   }
 
   const validate = (): Boolean => {
