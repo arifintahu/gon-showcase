@@ -2,11 +2,11 @@
   {
     "id": "iris",
     "name": "GON - IRISnet",
-    "rpc": "http://34.80.93.133:26657"
+    "rpc": "https://rpc-gon-irishub.omniflix.io"
   },
   {
     "id": "stargaze",
     "name": "GoN - Stargaze",
-    "rpc": "https://rpc.elgafar-1.stargaze-apis.com:443"
+    "rpc": "https://rpc.elgafar-1.stargaze-apis.com"
   }
 ]
