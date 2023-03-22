@@ -8,5 +8,10 @@
     "id": "omniflix",
     "name": "GoN - Omniflix",
     "rpc": "https://rpc.gon-flixnet.omniflix.io"
+  },
+  {
+    "id": "uptick",
+    "name": "GoN - Uptick",
+    "rpc": "https://rpc-gon-uptick.omniflix.io"
   }
 ]
