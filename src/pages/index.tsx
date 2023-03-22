@@ -152,7 +152,7 @@ export default function Home() {
               required
               fullWidth
               id="denom_id"
-              label="Denom ID"
+              label="Collection ID"
               name="denom_id"
               autoComplete="off"
               autoFocus
