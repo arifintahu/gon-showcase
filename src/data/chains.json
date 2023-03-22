@@ -5,8 +5,8 @@
     "rpc": "https://rpc-gon-irishub.omniflix.io"
   },
   {
-    "id": "stargaze",
-    "name": "GoN - Stargaze",
-    "rpc": "https://rpc.elgafar-1.stargaze-apis.com"
+    "id": "omniflix",
+    "name": "GoN - Omniflix",
+    "rpc": "https://rpc.gon-flixnet.omniflix.io"
   }
 ]

@@ -1,10 +1,11 @@
 import { Tendermint34Client } from '@cosmjs/tendermint-rpc'
 import { QueryClient } from '@cosmjs/stargate'
 import { getIrisDenoms, getIrisCollection } from './iris'
+import { getOmniflixDenoms, getOmniflixCollection } from './omniflix'
 
 const CHAIN = {
   IRIS: 'iris',
-  STARGAZE: 'stargaze',
+  OMNIFLIX: 'omniflix',
 }
 
 export async function getDenoms(chainId: string, rpc: string): Promise<any> {
@@ -19,7 +20,8 @@ export async function getDenoms(chainId: string, rpc: string): Promise<any> {
         response = await getIrisDenoms(queryClient)
         break
 
-      case CHAIN.STARGAZE:
+      case CHAIN.OMNIFLIX:
+        response = await getOmniflixDenoms(queryClient)
         break
 
       default:
@@ -51,7 +53,8 @@ export async function getCollection(
         response = await getIrisCollection(queryClient, denomId)
         break
 
-      case CHAIN.STARGAZE:
+      case CHAIN.OMNIFLIX:
+        response = await getOmniflixCollection(queryClient, denomId)
         break
 
       default:
