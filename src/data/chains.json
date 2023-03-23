@@ -13,5 +13,10 @@
     "id": "uptick",
     "name": "GoN - Uptick",
     "rpc": "https://rpc-gon-uptick.omniflix.io"
+  },
+  {
+    "id": "stargaze",
+    "name": "GoN - Stargaze",
+    "rpc": "https://rpc.elgafar-1.stargaze-apis.com"
   }
 ]

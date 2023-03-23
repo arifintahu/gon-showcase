@@ -17,3 +17,13 @@ export function checkURL(url: string | undefined): Boolean {
     return false
   }
 }
+
+export function getLastPath(path: string): string {
+  const items = path.split('/')
+
+  if (!items.length) {
+    return ''
+  }
+
+  return items[items.length - 1]
+}

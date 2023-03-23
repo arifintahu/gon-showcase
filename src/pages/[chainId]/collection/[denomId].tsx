@@ -68,7 +68,8 @@ export default function CollectionDetail() {
         const response = await getCollection(
           chain.id,
           chain.rpc,
-          String(denomId)
+          String(denomId),
+          true
         )
         if (response) {
           setCollection(response.collection)

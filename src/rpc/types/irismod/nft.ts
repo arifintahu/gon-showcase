@@ -147,7 +147,7 @@ export const Denom = {
   },
 }
 
-function createBaseNFT(): NFT {
+export function createBaseNFT(): NFT {
   return {
     id: '',
     name: '',

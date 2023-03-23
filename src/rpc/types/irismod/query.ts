@@ -210,7 +210,7 @@ export const QueryCollectionRequest = {
   },
 }
 
-function createBaseQueryCollectionResponse(): QueryCollectionResponse {
+export function createBaseQueryCollectionResponse(): QueryCollectionResponse {
   return {
     collection: createBaseColletion(),
   }
