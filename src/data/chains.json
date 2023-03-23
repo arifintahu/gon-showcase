@@ -18,5 +18,10 @@
     "id": "stargaze",
     "name": "GoN - Stargaze",
     "rpc": "https://rpc.elgafar-1.stargaze-apis.com"
+  },
+  {
+    "id": "juno",
+    "name": "GoN - Juno",
+    "rpc": "https://rpc.uni.junonetwork.io"
   }
 ]

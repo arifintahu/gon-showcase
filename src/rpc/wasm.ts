@@ -50,7 +50,7 @@ export function queryTokenInfo(
   return client.wasm.queryContractSmart(denomId, query)
 }
 
-export async function geStargazeCollection(
+export async function getWasmCollection(
   tmClient: Tendermint34Client,
   denomId: string,
   showTokenInfo: Boolean = false

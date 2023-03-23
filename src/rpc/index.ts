@@ -3,13 +3,14 @@ import { QueryClient } from '@cosmjs/stargate'
 import { getIrisDenoms, getIrisCollection } from './iris'
 import { getOmniflixDenoms, getOmniflixCollection } from './omniflix'
 import { getUptickDenoms, getUptickCollection } from './uptick'
-import { geStargazeCollection } from './stargaze'
+import { getWasmCollection } from './wasm'
 
 const CHAIN = {
   IRIS: 'iris',
   OMNIFLIX: 'omniflix',
   UPTICK: 'uptick',
   STARGAZE: 'stargaze',
+  JUNO: 'juno',
 }
 
 export async function getDenoms(chainId: string, rpc: string): Promise<any> {
@@ -71,7 +72,11 @@ export async function getCollection(
         break
 
       case CHAIN.STARGAZE:
-        response = await geStargazeCollection(tmClient, denomId, showTokenInfo)
+        response = await getWasmCollection(tmClient, denomId, showTokenInfo)
+        break
+
+      case CHAIN.JUNO:
+        response = await getWasmCollection(tmClient, denomId, showTokenInfo)
         break
 
       default:
