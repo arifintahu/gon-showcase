@@ -87,8 +87,8 @@ export default function CollectionDetail() {
   return (
     <>
       <Head>
-        <title>GoN Collection | {denomId}</title>
-        <meta name="description" content="GoN Showcase - Collection" />
+        <title>GoN Collections | {denomId}</title>
+        <meta name="description" content="GoN Collections - Collection" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

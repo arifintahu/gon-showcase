@@ -91,8 +91,11 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>GoN Showcase</title>
-        <meta name="description" content="GoN Showcase - Search Collection" />
+        <title>GoN Collections</title>
+        <meta
+          name="description"
+          content="GoN Collections - Search Collection"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
